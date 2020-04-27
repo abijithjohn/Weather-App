@@ -1,0 +1,59 @@
+<div class="main-wrapper">
+  <div class="weather-wrapper">
+    <span class="station">
+      {{weatherReport.name}}
+    </span>
+    <div class="weather-conditions">
+      <div class="weather-main image-wrapper">
+        <div class="image-wrapper">
+          <img [src]="weatherReport.icon" />
+          {{weatherReport.weather}}
+        </div>
+        {{weatherReport.temp|convertkelvintocelsius}}
+      </div>
+      <div>
+        <div>max: {{weatherReport.tempMax|convertkelvintocelsius}}</div>
+        <div>min: {{weatherReport.tempMin|convertkelvintocelsius}}</div>
+      </div>
+    </div>
+    <div>
+      {{weatherReport.date|timestamptodate}}
+    </div>
+    <div class="details-wrapper">
+      <h4>Details</h4>
+      <div class="details-list">
+        <div class="details-label">Feels like </div>: {{weatherReport.feelsLike|convertkelvintocelsius}}
+      </div>
+      <div class="details-list">
+        <div class="details-label">Humidity </div>: {{weatherReport.humidity}} hpa
+      </div>
+      <div class="details-list">
+        <div class="details-label">Wind </div>: {{weatherReport.wind}} m/s
+      </div>
+      <div class="details-list">
+        <div class="details-label">Sunrise </div>: {{weatherReport.sunrise|timestamptotime}}
+      </div>
+      <div class="details-list">
+        <div class="details-label">Sunset </div>: {{weatherReport.sunset|timestamptotime}}
+      </div>
+      <div class="details-list">
+        <div class="details-label">Country name </div>: {{weatherReport.country|countryname}}
+      </div>
+      <!-- <select ng-model="selected" ng-options="x for x in cities">
+      </select> -->
+      <select class="city-select" ng-model="selected" (change)="getWeatherDetails($event.target.value)">
+        <option class="select-options" *ngFor="let c of cities" ngValue="c">{{c}}</option>
+      </select>
+
+    </div>
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+
+
+    </div>
+
+
+  </div>
+
+</div>
